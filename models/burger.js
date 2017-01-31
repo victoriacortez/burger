@@ -1,10 +1,12 @@
 var orm = require('./../config/orm.js');
 
 var burger = {
-	display: function() {
+	display: function(req,res) {
 		orm.selectAll(function(error, results) {
 		    if (error) throw error
-		    return results;
+		    res.render('index', {
+		    	burgers: results
+		    });
 		})
 	},
 }
